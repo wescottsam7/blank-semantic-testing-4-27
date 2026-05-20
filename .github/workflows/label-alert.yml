@@ -1,3 +1,5 @@
+name: Email on Label Added
+
 on:
   issues:
     types: [labeled]
@@ -15,7 +17,7 @@ jobs:
           server_address: smtp.gmail.com
           server_port: 587
           secure: false
-  username: ${{ secrets.EMAIL_USERNAME }}
+          username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "🚨 Issue labeled HIGH PRIORITY"
           to: ${{ secrets.EMAIL_TO }}
