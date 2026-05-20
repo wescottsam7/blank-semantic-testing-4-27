@@ -1,0 +1,28 @@
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send email if specific label is applied
+        if: github.event.label.name == 'HIGH PRIORITY'
+
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          secure: false
+  username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "🚨 Issue labeled HIGH PRIORITY"
+          to: ${{ secrets.EMAIL_TO }}
+          from: GitHub Alerts
+          body: |
+            A HIGH PRIORITY label was added to an issue.
+
+            Repo: ${{ github.repository }}
+            Issue: ${{ github.event.issue.title }}
+            URL: ${{ github.event.issue.html_url }}
