@@ -10,6 +10,7 @@ jobs:
 
     steps:
       - name: Send email if specific label is applied
+      if: github.event.label.name == 'HIGH PRIORITY'
 
         uses: dawidd6/action-send-mail@v3
         with:
