@@ -10,8 +10,7 @@ jobs:
 
     steps:
       - name: Send email if specific label is applied
-      if: github.event.label.name == 'HIGH PRIORITY'
-
+        if: github.event.label.name == 'HIGH PRIORITY'
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
@@ -21,7 +20,7 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: "🚨 Issue labeled HIGH PRIORITY"
           to: ${{ secrets.EMAIL_TO }}
-          from: GitHub Alerts
+          from: "GitHub Alerts <${{ secrets.EMAIL_USERNAME }}>"
           body: |
             A HIGH PRIORITY label was added to an issue.
 
