@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Send email if specific label is applied
-        if: github.event.label.name == 'Status: Ready for Testing'
+        if: "${{ github.event.label.name == 'Status: Ready for Testing' }}"
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
