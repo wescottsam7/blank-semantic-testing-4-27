@@ -18,8 +18,8 @@ jobs:
           secure: false
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: "🚨 Issue labeled HIGH PRIORITY"
-          to: swescott@deloitte.com
+          subject: " Issue labeled HIGH PRIORITY"
+          to: ${{ vars.EMAIL_TO }}
           from: "GitHub Alerts <${{ secrets.EMAIL_USERNAME }}>"
           body: |
             A HIGH PRIORITY label was added to an issue.
